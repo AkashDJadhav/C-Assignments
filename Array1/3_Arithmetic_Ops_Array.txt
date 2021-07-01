@@ -1,0 +1,51 @@
+// 3.Write a program to create an array of integers and perform following operations on that array like 
+finding the sum, average, maximum and minimum number in that array. Accept the numbers of the 
+array from user.
+
+#include<stdio.h>
+int main()
+{
+	int a[50],n,i,sum=0,max,min,sum2=0;
+	float avg;
+	printf("Enter size of array");
+	scanf("%d",&n);
+	printf("Enter the elemnet of array");
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&a[i]);
+		
+	}
+
+	for(i=0;i<n;i++)
+	{
+		sum=sum+a[i];
+		
+	}
+   	printf("Sum of element in array-%d\n ",sum);
+
+	for(i=0;i<n;i++)
+	{
+		sum2=sum2+a[i];
+		avg=sum2/n;
+	}
+	printf("Average of array element is-%f\n ",avg);
+	max=a[0];
+	for(i=1;i<n;i++)
+	{
+		if(max<a[i])
+		max=a[i];
+		
+	}
+	printf(" %d is the maximum number in array\n",max);
+	min=a[0];
+	for(i=1;i<n;i++)
+	{
+		if(min>a[i])
+		{
+			min=a[i];
+		}
+		
+	}
+	printf("%d is the minimum in the array\n",min);
+	return 0;
+}
