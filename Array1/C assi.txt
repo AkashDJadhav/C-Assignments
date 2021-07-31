@@ -1,0 +1,1559 @@
+PROGRAMS ON ARRAYS
+    1.Find all odd and even no.'s in runtime array?
+     
+    #include <stdio.h>
+    void main()
+    {
+ 
+        int array[100], i, num;
+        printf("Enter the size of an array \n");
+ 
+        scanf("%d", &num);
+        printf("Enter the elements of the array \n");
+ 
+        for (i = 0; i < num; i++) 
+        {
+            scanf("%d", &array[i]);
+        }
+ 
+        printf("Even numbers in the array are - ");
+        for (i = 0; i < num; i++) 
+        {
+            if (array[i] % 2 == 0) 
+            {
+                printf("%d \t", array[i]);
+            }
+        }
+ 
+        printf("\n Odd numbers in the array are -");
+        for (i = 0; i < num; i++) 
+        {
+            if (array[i] % 2 != 0) 
+            {
+                printf("%d \t", array[i]);
+            }
+        }
+ 
+    }
+
+2. Find all prime no.'s in runtime array? 
+
+#include<stdio.h>
+
+int main() {
+
+   int arr[10], i, s, j, p;
+
+   printf("Enter size of an array:");
+   scanf("%d", &s);
+
+   printf("Enter array elements:");
+   for (i = 0; i < s; i++) {
+       scanf("%d", &arr[i]);
+   }
+
+   printf("All prime list is:");
+   for (i = 0; i < s; i++) {
+       j = 2;
+       p = 1;
+       while (j < arr[i]) {
+           if (arr[i] % j == 0) {
+               p = 0;
+               break;
+           }
+           j++;
+       }
+       if (p == 1) {
+           printf("%d ", arr[i]);
+       }
+   }
+
+   return 0;
+}
+
+3.Write a program to create an array of integers and perform following operations on that array like 
+finding the sum, average, maximum and minimum number in that array. Accept the numbers of the 
+array from user.
+
+#include<stdio.h>
+
+int sumavg(int a[],int n)
+{
+   int i,total=0,avg;
+    for (i = 0; i < n; i++)
+    {
+        total+=a[i];
+    }
+    avg = total / n;
+    printf("\nSum : %d\n", total);
+    printf("Average : %d\n", avg);
+ 
+}
+int minmax(int a[],int n)
+ {
+ 	int min,max,i;
+ 	min=max=a[0];
+    for(i=1; i<n; i++)
+    {
+       if(min>a[i])
+		  min=a[i];   
+	   if(max<a[i])
+          max=a[i];       
+    }
+ 	printf("Minimum : %d",min);
+    printf("\nMaximum : %d",max);
+ }
+int main()
+{
+    int a[10],i,n;
+   
+    printf("\nEnter size of the array : ");
+    scanf("%d", &n);
+ 
+    printf("\nEnter elements in array : ");
+    for(i=0; i<n; i++)
+    {
+ 		scanf("%d",&a[i]);
+    }
+    minmax(a,n);
+    sumavg(a,n);
+    return 0;
+    }
+
+ 4.Perform all the above operations for 2D arrays.
+
+#include <stdio.h>
+ 
+int main()
+{
+	int row=0,column=0;
+	printf("\nPlease enter row size of 2D array: ");
+	scanf("%d",&row);
+	printf("Please enter column size of 2D array: ");
+	scanf("%d",&column);
+	
+	int a[row][column];
+	int i=0,j=0;
+	printf("Please Enter array elements: \n");
+	for(i=0;i<row;i++)
+			for(j=0;j<column;j++)
+				scanf("%d",&a[i][j]);
+		
+	int sum=0,min=a[0][0],max=a[0][0];
+	
+	int k=0,l=0;
+	for(k=0;k<row;k++)
+		{
+			for(l=0;l<column;l++)
+			{
+				sum+=a[k][l];
+				
+				if(a[k][l]>max)
+					max=a[k][l];
+				if(a[k][l]<min)
+					min=a[k][l];
+			}
+		}
+	double avg=0, d=0;
+	d=(double)row*column;
+	avg=sum/d;
+	printf("\nSum: %d\nAverage: %.3f\nMinimum: %d\nMaximum: %d\n",sum,avg,min,max);
+	return 0;
+}
+
+5.Enter data for two matrices. Multiply them to store result in third matrix & display result. 
+#include <stdio.h>
+ 
+int main()
+{
+  int m, n, p, q, c, d, k, sum = 0;
+  int first[10][10], second[10][10], multiply[10][10];
+ 
+  printf("Enter number of rows and columns of first matrix : ");
+  scanf("%d%d", &m, &n);
+  printf("Enter elements of first matrix: ");
+ 
+  for (c = 0; c < m; c++)
+    for (d = 0; d < n; d++)
+      scanf("%d", &first[c][d]);
+ 
+  printf("Enter number of rows and columns of second matrix :");
+  scanf("%d%d", &p, &q);
+if (n != p)
+    printf("The multiplication isn't possible.\n");
+  else
+  {
+    printf("Enter elements of second matrix :");
+ 
+    for (c = 0; c < p; c++)
+      for (d = 0; d < q; d++)
+        scanf("%d", &second[c][d]);
+ 
+    for (c = 0; c < m; c++) {
+      for (d = 0; d < q; d++) {
+        for (k = 0; k < p; k++) {
+          sum = sum + first[c][k]*second[k][d];
+        }
+ 
+        multiply[c][d] = sum;
+        sum = 0;
+      }
+    }
+ printf("Product of the matrices:\n");
+ 
+    for (c = 0; c < m; c++) {
+      for (d = 0; d < q; d++)
+        printf("%d\t", multiply[c][d]);
+ 
+      printf("\n");
+    }
+  }
+ 
+  return 0;
+}
+
+6.Enter data for one matrix. Find its Transpose & display result.
+#include <stdio.h>
+ 
+int main()
+{
+	int row,col,i,j,a[row][col],transpose[col][row],k,l;
+	printf("Enter row size of 2D array to perform transpose operation: ");
+	scanf("%d",&row);
+	printf("Enter column size of 2D array to perform transpose operation: ");
+	scanf("%d",&col);
+	
+	for(i=0;i<row;i++)
+		for(j=0;j<col;j++)
+			scanf("%d",&a[i][j]);
+	
+	printf("\nTranspose Matrix: \n");
+	for(k=0;k<row;k++)
+	{
+		for(l=0;l<col;l++)
+			printf("\t%d",transpose[k][l]=a[l][k]);
+		printf("\n");
+	}
+}
+
+
+
+ PROGRAMS ON LOOPS
+1.wrie a c program to input basic salary of an employee and calculate gross salary.
+#include<stdio.h>
+int main()
+{
+	float basic,gross,hra,da;
+	printf("enter the basic salary=");
+	scanf("%f",&basic);
+	if (basic<=10000)
+	{
+		hra=(basic*20)/100;
+		da=(basic*80)/100;
+	}
+	else if(basic<=20000)
+	{
+		hra=(basic*25)/100;
+		da=(basic*90)/100;
+	}
+	else
+	{
+		hra=(basic*30)/100;
+		da=(basic*95)/100;	
+	}
+	gross=basic+hra+da;
+	printf("gross salary is:%f",gross);
+	return 0;
+	
+}
+
+
+2. Writes a c program to input angles & check whether the triangle is valid or not?
+ Code-   
+  #include<stdio.h>
+  void main()
+  {
+	int angle_A,angle_B,angle_C,d;
+              printf("Enter the angle of traingle");
+	scanf("%d %d %d",&angle_A,&angle_B,&angle_C);
+	d=angle_A+angle_B+angle_C;
+	if(d==180)
+	{
+		printf("Traingle is valid ");
+		
+	}
+	else 
+	{
+		printf("Triangle is not valid");
+		
+	}
+}
+
+3.Accept a no and display its multiplication table
+ #include<stdio.h>
+void main()
+{
+	int a,sum,i;
+	printf("Enter the no to print table");
+	scanf("%d",&a);
+	for(i=1;i<=10;i++)
+	{
+		sum=a*i;
+		printf("\n%d",sum);
+		
+	}
+}
+4.Sum of Digits
+#include<stdio.h>
+#include<conio.h>
+
+void main()
+{
+
+
+int a,b;
+int result;
+printf("Enter the two numbers ");
+scanf("%d %d",&a,&b);
+ result=a+b;
+ 
+ 
+ printf("The sum of two numbers: %d",result);
+ return result;
+ 
+ 
+}
+
+5.Accept a number and display whether its armstrong number.
+#include<stdio.h>
+int main()
+{
+	int n,sum=0,temp,r;
+	printf("Enter the no=");
+	scanf("%d",&n);
+	temp=n;
+	while(n>0)
+	{
+		
+	r=n%10;
+	sum=sum+(r*r*r);
+	n=n/10;
+	
+		
+	}
+if(temp==sum)
+{
+	printf("the no is armstrong no");
+	
+}
+else
+{
+	printf("the no is not armstrong no");
+	
+}
+return 0; 
+}
+
+6.Uppercase OR Lowercase
+
+#include<stdio.h>
+#include<conio.h>
+
+void main()
+{
+	int ch,A,Z,a,z;
+	
+	printf("Enter a character to check whether its Uppercaser or lower");
+	scanf("%c",&ch);
+	
+	if(ch>='A' && ch<='Z'){
+		printf("Entered character is in Uppercase %c");
+		
+	}
+	else if(ch>='a' && ch<='z')
+	{
+		printf("Entered character is in Lowercase %c");
+	
+		
+	}
+	else{
+		printf("You entered a wrong character %c");
+		
+	}
+	
+}
+
+
+7. Write a C program to input week number and print week day.
+#include<stdio.h>
+#include<conio.h>
+
+void main(){
+
+
+int weekday;
+
+printf("Enter a weekday:");
+scanf("%d",&weekday);
+
+if(weekday==1){
+printf("Monday");
+
+}
+else if (weekday ==2)
+{
+	printf("Tuesday");
+	
+}
+else if(weekday==3)
+{
+	printf("Wednesday");
+	
+}
+else if(weekday==4)
+{
+	printf("Thursday"	);
+}
+else if(weekday==5)
+{
+	printf("Friday");
+	
+}
+else if(weekday==6)
+{
+	printf("Saturday");
+}
+else if(weekday==7)
+{
+	printf("Sunday");
+}
+else{
+	printf("You entered a wrong choice");
+}
+
+
+}
+8. Write a C program to input month number and print number of days in that month. 
+#include <stdio.h>
+
+int main()
+{
+    int month;
+
+    
+    printf("Enter month number (1-12): ");
+    scanf("%d", &month);
+
+
+    if(month == 1)
+    {
+        printf("January 31 days");
+    }
+    else if(month == 2)
+    {
+        printf(" February 28 or 29 days");
+    }
+    else if(month == 3)
+    {
+        printf("March 31 days");
+    }
+    else if(month == 4)
+    {
+        printf("April 30 days");
+    }
+    else if(month == 5)
+    {
+        printf("May 31 days");
+    }
+    else if(month == 6)
+    {
+        printf("June 30 days");
+    }
+    else if(month == 7)
+    {
+        printf("July 31 days");
+    }
+    else if(month == 8)
+    {
+        printf("August 31 days");
+    }
+    else if(month == 9)
+    {
+        printf("September 30 days");
+    }
+    else if(month == 10)
+    {
+        printf("October 31 days");
+    }
+    else if(month == 11)
+    {
+        printf("November 30 days");
+    }
+    else if(month == 12)
+    {
+        printf("December 31 days");
+    }
+    else
+    {
+        printf("Invalid input! Please enter month number between (1-12).");
+    }
+
+    return 0;
+
+9. Write a C program to count total number of notes in given amount. 
+
+}
+#include <stdio.h>
+
+int main()
+{
+    int amount;
+    int note500, note100, note50, note20, note10, note5, note2, note1;
+    
+
+    note500 = note100 = note50 = note20 = note10 = note5 = note2 = note1 = 0;
+
+
+    printf("Enter amount: ");
+    scanf("%d", &amount);
+
+
+    if(amount >= 500)
+    {
+        note500 = amount/500;
+        amount -= note500 * 500;
+    }
+    if(amount >= 100)
+    {
+        note100 = amount/100;
+        amount -= note100 * 100;
+    }
+    if(amount >= 50)
+    {
+        note50 = amount/50;
+        amount -= note50 * 50;
+    }
+    if(amount >= 20)
+    {
+        note20 = amount/20;
+        amount -= note20 * 20;
+    }
+    if(amount >= 10)
+    {
+        note10 = amount/10;
+        amount -= note10 * 10;
+    }
+    if(amount >= 5)
+    {
+        note5 = amount/5;
+        amount -= note5 * 5;
+    }
+    if(amount >= 2)
+    {
+        note2 = amount /2;
+        amount -= note2 * 2;
+    }
+    if(amount >= 1)
+    {
+        note1 = amount;
+    }
+
+    
+    printf("Total number of notes = \n");
+    printf("500 = %d\n", note500);
+    printf("100 = %d\n", note100);
+    printf("50 = %d\n", note50);
+    printf("20 = %d\n", note20);
+    printf("10 = %d\n", note10);
+    printf("5 = %d\n", note5);
+    printf("2 = %d\n", note2);
+    printf("1 = %d\n", note1);
+
+    return 0;
+}
+
+10. Write a C program to invert the case of alphabet.
+#include<stdio.h>
+#include<ctype.h> 
+
+int main()
+{
+  
+
+    char alphabet;
+    printf("Enter an alphabet : ");
+    putchar('\n');  
+
+    alphabet=getchar();
+
+    printf("\n\nReverse case of %c is :  ",alphabet);
+
+    if(islower(alphabet))
+        putchar(toupper(alphabet));
+
+    else 
+        printf("%c",tolower(alphabet)) ;
+
+   
+    return 0;
+}
+
+
+
+
+
+11. Write a C program to print all natural numbers from 1 to n. - using while loop
+
+
+#include <stdio.h>
+
+int main()
+{
+    int i, end;
+
+   
+    printf("Print all natural numbers from 1 to : ");
+    scanf("%d", &end);
+
+   
+    i=1;
+    while(i<=end)
+    {
+        printf("%d\n", i);
+        i++;
+    }
+
+    return 0;
+}
+
+12. Write a C program to print all natural numbers in reverse (from n to 1). - using while loop 
+#include<stdio.h>
+int main()
+{
+	int n;
+	printf("enter the no from which you want to reverse no");
+	scanf("%d",&n);
+	while(n>=1)
+	{
+		printf("\n%d",n);
+		n--;
+	}
+	return 0;
+}
+
+13. Write a C program to find sum of all even and odd numbers between 1 to n. 
+#include<stdio.h>
+int main()
+{
+	int n,even_sum=0,odd_sum=0,i;
+	printf("enter the no upto want to find sum of odd and even ");
+	scanf("%d",&n);
+	for(i=1;i<=n;i++)
+	{
+		if(i%2==0)
+		{
+			even_sum=even_sum+i;
+		}
+		else
+		{
+			odd_sum=odd_sum+i;
+		}
+	}
+	printf("neven no sum upto %d is=%d",n,even_sum);
+	printf("\nodd no sum upto %d is=%d",n,odd_sum);
+	return 0;
+}
+
+
+14. Write a C program to count number of digits in a number. 
+#include<stdio.h>
+int main()
+{
+	int n,a,count=0;
+	printf("enter no to check the digit count");
+	scanf("%d",&n);
+	while(n>0)
+	{
+		a=n%10;
+		count++;
+		n=n/10;
+		
+	}
+	printf("count is=%d",count);
+	return 0;
+}
+
+
+15. Write a C program to find first and last digit of a number.  
+#include<stdio.h>
+int main()
+{
+	int n,a;
+	printf("enter no to check first and last digit");
+	scanf("%d",&n);
+	a=n%10;
+	printf("last digit is=%d",a);
+	while(n>=10)
+	{
+		n=n/10;
+		
+	}
+	printf("\nfirst digit is=%d",n);
+}
+
+
+
+16. Write a C program to enter a number and print its reverse.
+#include<stdio.h>  
+ int main()    
+{    
+int n, reverse=0, rem;    
+printf("Enter a number: ");    
+  scanf("%d", &n);    
+  while(n!=0)    
+  {    
+     rem=n%10;    
+     reverse=reverse*10+rem;    
+     n/=10;    
+  }    
+  printf("Reversed Number: %d",reverse);    
+return 0;  
+} 
+
+
+18. Write a C program to find power of a number using for loop. 
+#include<stdio.h>
+int main()
+{
+	int base,expo,i=1,result=1;
+	printf("enter base number");
+	scanf("%d",&base);
+	printf("enter expo");
+	scanf("%d",&expo);
+	while(i<=expo)
+	{
+		result=result*base;
+		i++;
+		
+	}
+	printf("%d %d=%d",base,expo,result);
+	return 0;
+}
+
+19. Write a C program to find all factors of a number.
+#include<stdio.h>
+int main()
+{
+	int i,N;
+	printf("enter no find the factors");
+	scanf("%d",&N);
+	for(i=1;i<=N;i++)
+	{
+		if(N%i==0)
+		{
+			printf("\nfactors of no are=%d",i);
+		}
+		
+	}
+	return 0;
+}
+
+20. Write a C program to calculate factorial of a number.
+#include<stdio.h>
+int main()
+{
+	int n,fact=1,i=1;
+	printf("enter no to find factorial");
+	scanf("%d",&n);
+	while(i<=n)
+	{
+		fact=fact*i;
+		i++;
+	}
+	printf("factorial is+%d",fact);
+	return 0;
+	
+}
+
+
+	
+
+
+21. Write a C program to find HCF (GCD) of two numbers.
+#include<stdio.h>
+int main()
+{
+	int a,b,i,gcd;
+	printf("enter two number to find the HCF");
+	scanf("%d %d",&a,&b);
+	for(i=1;i<=a && i<=b;++i)
+	{
+		if(a%i==0 && b%i==0)
+		{
+			gcd=i;
+		}
+	}
+	printf("gcd is=%d ",gcd);
+    
+	return 0;
+	
+}
+
+
+22. Write a C program to find LCM of two numbers.
+#include<stdio.h>
+int main()
+{
+	int n1,n2,max;
+	printf("Enter the two positive integer");
+	scanf("%d%d",&n1,&n2);
+	max=(n1>n2)?n1:n2;
+	while(1)
+	{
+		if(max % n1 == 0 && max % n2 == 0)
+		{
+				printf("THe lcm of %d and %d is=%d",n1,n1,max);
+		        break;
+		}
+		max++;
+	
+	}
+
+	return 0;
+}
+
+23. Write a C program to check whether a number is Prime number or not. 
+#include<stdio.h>
+int main()
+{
+	int n,i,m=0,flag=0;
+	printf("Enter the no to check prime");
+	scanf("%d",&n);
+	m=n/2;
+	for(i=2;i<=m;i++)
+	{
+		if(n%i==0)
+		{
+			printf("Number is not prime");
+	        flag=1;
+	        break;
+		}
+		
+	}
+	if(flag==0)
+	{
+		printf("Number is prime");
+		
+	}
+	return 0;
+}
+
+
+24. Prime numbers from 1 to n.
+#include<stdio.h>
+
+int main(){
+
+    int num,i,count,n;
+    printf("Enter max range: ");
+    scanf("%d",&n);
+
+    for(num = 1;num<=n;num++){
+
+         count = 0;
+
+         for(i=2;i<=num/2;i++){
+             if(num%i==0){
+                 count++;
+                 break;
+             }
+        }
+        
+         if(count==0 && num!= 1)
+             printf("%d ",num);
+    }
+  
+   return 0;
+}
+
+25. Write a C program to check whether a number is Perfect number or not
+#include <stdio.h>
+int main()
+{
+	int i=1,num,sum=0;
+	printf("Enter any no to chcek perfect Number\n");
+	scanf("%d",&num);
+	while(i<num)
+	{
+		if(num%i==0)
+		{
+		
+	    sum=sum+i;
+	    }
+	    i++;
+	}
+	
+	if(sum==num)
+	{
+	printf("\n %d is a perfect number",num);
+	}
+	else
+	{
+		printf("\n%d is not a perfect number");
+		
+	}
+	return 0;
+}
+ 26. Write a C program to check whether a number is Strong number or not.  
+#include<stdio.h>
+int main()
+{
+	int i, originalNum,num,lastDigit,sum;
+	int fact;
+	printf("enter any number to check strong number:");
+	scanf("%d",&num);
+	originalNum=num;
+	sum=0;
+	while(num>0)
+	{
+		lastDigit=num%10;
+		fact=1;
+		for(i=1;i<=lastDigit;i++)
+		{
+			fact=fact*i;
+			
+		}
+		sum=sum+fact;
+		num=num/10;
+	}
+	if(sum==originalNum)
+	{
+		printf("%d is a strong number",originalNum);
+    }
+	else
+	{
+		printf("%d is not strong number",originalNum);
+			
+	}
+
+	return 0;
+}
+
+27. Write a C program to print Fibonacci series up to n terms.  
+#include<stdio.h>
+int main()
+{
+	int i,n,t1=0,t2=1;
+	int nextTerm=t1+t2;
+	printf("Enter the number of terms");
+	scanf("%d",&n);
+	printf("fibancci serries %d,%d,",t1,t2);
+	for(i=1;i<=n;i++)
+	{
+		printf("%d,",nextTerm);
+		t1=t2;
+		t2=nextTerm;
+		nextTerm=t1+t2;
+	}
+	return 0;
+}
+
+28.pattern
+#include <stdio.h>
+#include <math.h>
+
+int main() 
+{
+
+    int n,z;
+    scanf("%d", &n);
+    
+    for (int i = 0; i <= n; i++)
+    {   
+        z = n-i;
+        for (int k = 0; k <= z ; k++)
+        {
+            printf(" ");
+        }
+        
+        
+        if (i==0)
+
+        {
+            printf("0");
+        }
+
+        else {
+
+            for (int j = -i; j<= i; j++)  
+            {
+                int m = abs(j);
+                printf("%d", m);
+            }
+        }
+        
+        
+        
+        printf("\n");
+    }
+
+for (int i = n-1; i >= 0; i--)
+    {   
+        z = n-i;
+        for (int k = 0; k <= z ; k++)
+        {
+            printf(" ");
+        }
+        if (i==0)
+
+        {
+            printf("0");
+        }
+
+        else {
+
+            for (int j = -i; j<= i; j++)  
+            {
+                int m = abs(j);
+                
+                
+                
+                printf("%d", m);
+            }
+        }
+        
+        
+        
+        printf("\n");
+    }
+
+    
+   return 0;
+} 
+......................................................................................................
+C++
+
+1.invoke all the methods in that class.*/
+
+using namespace std;
+#include<iostream>
+#include<string.h>
+class person
+{
+    public:
+    char name[20];
+    int age;
+    char city[15];
+    person()
+    {
+        strcpy(name,"Sachin");
+        this->age=20;
+        strcpy(city,"Pune");
+    }
+    person (char* nm, int a, char* c)
+    {
+        strcpy(name, nm);
+        this->age=a;
+        strcpy(city, c);
+    }
+    void setname(char* nm)
+    {
+        strcpy(this->name,nm);
+    }
+    void setage(int a)
+    {
+        this->age=a;
+    }
+    void setcity(char* c)
+    {
+        strcpy(this->city,c);
+    }
+    char* getname()
+    {
+        return this->name;
+    }
+    int getage()
+    {
+        this->age;
+    }
+    char* getcity()
+    {
+        this->city;
+    }
+    void display()
+    {
+        cout<<"\nName is: "<<this->name;
+        cout<<"\nAge is: "<<this->age;
+        cout<<"\nCity is: "<<this->city;
+    }
+};
+int main()
+{
+    person p1;
+    p1.display();
+    cout<<"\n";
+    
+    person p2("Rohit", 24, "Mumbai");
+    p2.display();
+    cout<<"\n";
+
+    person p3("Virat", 25, "Nagpur");
+    p3.display();
+    cout<<"\n";
+}
+
+
+2. Create a class Date with data members as dd, mm, yy. Write getters and setters for all the data
+members. Also add the display function. Create Default and Parameterized constructors. Create the 
+object of this class in main method and invoke all the methods in that class.
+
+#include<iostream>
+using namespace std;
+
+class date
+{
+   public:
+        int dd, mm, yy;
+        date()
+        {
+            this->dd=30;
+            this->mm=04;
+            this->yy=2021;
+            
+        }
+        date (int d, int m, int y)
+        {
+            this->dd=d;
+            this->mm=m;
+            this->yy=y;
+        }  
+       void setdd(int d)
+        {
+            this->dd=d;
+        }
+        void setmm(int m)
+        {
+            this->mm=m;
+        }
+        void setyy(int y)
+        {
+            this->yy=y;
+        }
+        int getdd()
+        {
+            this->dd;
+        }
+        int getmm()
+        {
+            this->mm;
+        }
+        int getyy()
+        {
+            this->yy;
+        }
+       void display()
+        {
+            cout<<"\nDate: "<<this->dd;
+            cout<<"\nMonth: "<<this->mm;
+            cout<<"\nYear: "<<this->yy;
+        }
+};
+int main()
+{
+    date d1;
+    d1.display();
+    cout<<"\n";
+    
+    date d2(01, 05, 2021);
+    d2.display();
+    cout<<"\n";
+    return 0;
+}
+
+3.Create a class Book with data members as bname,id,author,price. Write getters and setters 
+for all the data members. Also add the display function. Create Default and Parameterized 
+constructors. Create the object of this class in main method and invoke all the methods in 
+that class.*/
+
+using namespace std;
+#include<iostream>
+#include<string.h>
+class book
+{
+    public:
+    char name[20];
+    int id;
+    char author[20];
+    int price;
+
+    book()
+    {
+        strcpy(name,"Programming in C");
+        this->id=20;
+        strcpy(author,"Stephen G. Kochan");
+        this->price=320;
+    }
+    book (char* nm, int i, char* a, int p)
+    {
+        strcpy(name, nm);
+        this->id=i;
+        strcpy(author, a);
+        this->price=p;
+    }
+    void setname(char* nm)
+    {
+        strcpy(this->name,nm);
+    }
+    void setid(int i)
+    {
+        this->id=i;
+    }
+    void setauthor(char* a)
+    {
+        strcpy(this->author,a);
+    }
+    void setprice(int p)
+    {
+        this->price=p;
+    }
+    char* getname()
+    {
+        return this->name;
+    }
+    int getid()
+    {
+        this->id;
+    }
+    char* getauthor()
+    {
+        this->author;
+    }
+    int getprice()
+    {
+        this->price;
+    }
+    void display()
+    {
+        cout<<"\nBook name is: "<<this->name;
+        cout<<"\nBook Id is: "<<this->id;
+        cout<<"\nBook author is: "<<this->author;
+        cout<<"\nBook price is: "<<this->price;
+    }
+};
+int main()
+{
+    book b1;
+    b1.display();
+    cout<<"\n";
+    
+    book b2("C++ Programming Language", 2, "Bjarne Stroustrup", 300);
+    b2.display();
+    cout<<"\n";
+
+    book b3("Effective JAVA", 3, "Joshua Bloch", 400);
+    b3.display();
+    cout<<"\n";
+}
+.....................................................................................................
+String
+
+
+1: Write a program to sort a number of strings using bubble sort. Input is a number of strings and the output is the sorted list based on the length of strings. 
+For e.g.: If input is jyoti, sareeka, anisha, sangita, savita, suja 
+The output is suja, jyoti, anisha, savita, sareeka, sangita 
+
+#include <stdio.h>
+#include <string.h>
+void main(){
+     char name[25][50],temp[25];
+	 int n,i,j;
+	 printf("\n\nSorts the strings of an array using bubble sort :\n");
+	 printf("-----------------------------------------------------\n");
+	 printf("Input number of strings :");
+	 scanf("%d",&n);
+     printf("Input string %d :\n",n);
+	      for(i=0;i<=n;i++){
+	          fgets(name[i], sizeof name, stdin);
+	      }
+	      for(i=1;i<=n;i++)
+	          for(j=0;j<=n-i;j++)
+	            if(strcmp(name[j],name[j+1])>0){
+	               strcpy(temp,name[j]);
+	               strcpy(name[j],name[j+1]);
+	               strcpy(name[j+1],temp);
+	           }
+	  printf("The strings appears after sorting :\n");
+	  for(i=0;i<=n;i++)
+	  printf("%s\n",name[i]);
+  }
+
+
+
+
+2.Write a program to cyclically permute a string one character at a time. 
+E.g.: If space is the input the output should produce 
+space paces acesp cespa espac 
+#include<stdio.h>
+int main(void)
+{
+    char a[100];
+    int i, j;
+    printf("Enter a word: ");
+    gets(a);
+
+    for(i=0; a[i]!=0; i++)
+    {
+        for(j=i; a[j]!=0; j++)
+            printf("%c",a[j]);
+
+        for(j=0; j<i; j++)
+            printf("%c",a[j]);
+        printf("\n");
+    }
+
+    return 0;
+}
+
+
+3.Write functions for the following base conversion operations: a. Octal to Hexadecimal. b. Hexadecimal to Octal. 
+#include <stdio.h>  
+#include<string.h>  
+int main()  
+{  
+  int octaltobinary[]={0,1,10,11,100,101,110,111};  
+  char hexadecimal[10];  
+   char hex[10];  
+  long int binary=0;  
+  int octal,i;  
+  int rem=0;  
+  int position=1;  
+  int len=0;  
+   int k=0;  
+  printf("Enter a octal number");  
+  scanf("%d",&octal);  
+// Converting octal number into a binary number.    
+while(octal!=0)  
+  {  
+      rem=octal%10;  
+      binary=octaltobinary[rem]*position+binary;  
+      octal=octal/10;  
+      position=position*1000;  
+  }  
+  printf("The binary number is : %ld",binary);  
+    
+  // Converting binary number into a hexadecimal number.  
+  while(binary > 0)  
+    {  
+        rem = binary % 10000;  
+        switch(rem)  
+        {  
+            case 0:  
+                strcat(hexadecimal, "0");  
+                break;  
+            case 1:  
+                strcat(hexadecimal, "1");  
+                break;  
+            case 10:  
+                strcat(hexadecimal, "2");  
+                break;  
+            case 11:  
+                strcat(hexadecimal, "3");  
+                break;  
+            case 100:  
+                strcat(hexadecimal, "4");  
+                break;  
+            case 101:  
+                strcat(hexadecimal, "5");  
+                break;  
+            case 110:  
+                strcat(hexadecimal, "6");  
+                break;  
+            case 111:  
+                strcat(hexadecimal, "7");  
+                break;  
+            case 1000:  
+                strcat(hexadecimal, "8");  
+                break;  
+            case 1001:  
+                strcat(hexadecimal, "9");  
+                break;  
+            case 1010:  
+                strcat(hexadecimal, "A");  
+                break;  
+            case 1011:  
+                strcat(hexadecimal, "B");  
+                break;  
+            case 1100:  
+                strcat(hexadecimal, "C");  
+                break;  
+            case 1101:  
+                strcat(hexadecimal, "D");  
+                break;  
+            case 1110:  
+                strcat(hexadecimal, "E");  
+                break;  
+            case 1111:  
+                strcat(hexadecimal, "F");  
+            break;  
+        }  
+len=len+1;  
+        binary /= 10000;  
+    }  
+  for( i=len-1;i>=0;i--)  
+{  
+    hex[k]=hexadecimal[i];  
+    k++;  
+}  
+    hex[len]='\0';  
+    printf("\nThe hexadecimal number is :");  
+for( i=0; hex[i]!='\0';i++)  
+{  
+    printf("%c",hex[i]);  
+}  
+  
+    return 0;  
+}  
+
+4.A program is to be written to implement the tower of Hanoi Problem. 
+#include <stdio.h>
+ 
+void towers(int, char, char, char);
+ 
+int main()
+{
+    int num;
+ 
+    printf("Enter the number of disks : ");
+    scanf("%d", &num);
+    printf("The sequence of moves involved in the Tower of Hanoi are :\n");
+    towers(num, 'A', 'C', 'B');
+    return 0;
+}
+void towers(int num, char frompeg, char topeg, char auxpeg)
+{
+    if (num == 1)
+    {
+        printf("\n Move disk 1 from peg %c to peg %c", frompeg, topeg);
+        return;
+    }
+    towers(num - 1, frompeg, auxpeg, topeg);
+    printf("\n Move disk %d from peg %c to peg %c", num, frompeg, topeg);
+    towers(num - 1, auxpeg, topeg, frompeg);
+}
+
+
+5.Using pointers write your own functions for the following: 
+
+1.String Lenght
+
+#include<string.h>
+string = "Mumbai";
+printf("Length = %d",strlen(string));
+
+2.String Concatination
+
+#include<string.h>=
+char string1[] = "Anti";
+char string2[] = "Particle";
+strcat(string1,string2);=
+printf("%s",string1); 
+
+3.String copy 
+
+#include<string.h>
+char source[] = "Hello";
+char destination[10]; 
+strcpy(destination,source);
+printf("%s",destination);
+
+4.Strcmp
+
+#include<string.h>
+char string1 = "Nepal";
+char string2 = "Srilanka";
+if(strcmp(string1,string2)==0){
+printf("They are equal");
+}else{
+printf("They are not equal"); //this is executed
+}
+
+6.
+convert a given integer (in seconds) to hours, minutes and seconds
+#include <stdio.h>
+int main() {
+	int sec, h, m, s;
+	printf("Input seconds: ");
+	scanf("%d", &sec);
+	
+	h = (sec/3600); 
+	
+	m = (sec -(3600*h))/60;
+	
+	s = (sec -(3600*h)-(m*60));
+	
+	printf("H:M:S - %d:%d:%d\n",h,m,s);
+	
+	return 0;
+}
+....................................................................................................
+
+
+
+
+
+
+
+#include<stdio.h>
+#include<conio.h>
+
+void main()
+{
+
+int radius,perimeter,area;
+float PI=3.14;
+
+printf("Enter the radius of circle");
+scanf("%d",&radius);
+
+perimeter=2*PI*radius;
+area=PI*radius*radius;
+printf("The perimeter and area of a circle is %d";perimeter,area);
+}
+
+17.Palindrom or not
+#include<stdio.h>  
+int main()    
+{    
+int n,r,sum=0,temp;    
+printf("enter the number=");    
+scanf("%d",&n);    
+temp=n;    
+while(n>0)    
+{    
+r=n%10;    
+sum=(sum*10)+r;    
+n=n/10;    
+}    
+if(temp==sum)    
+printf("palindrome number ");    
+else    
+printf("not palindrome");   
+return 0;  
+}
+
+20.Write a program to find the factorial.
+#include<stdio.h>
+int main()
+{
+	int num,fact=1,i;
+	printf("Enter the to find the factorial");
+	scanf("%d",&num);
+	for(i=1;i<=num;i++)
+	{
+		fact=fact*i;
+		
+	}
+	printf("the factorial of no %d is %d ",num,fact);
+	return 0;
+
+
